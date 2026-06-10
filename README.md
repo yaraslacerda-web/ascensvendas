@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -496,44 +497,150 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.07);padding
 <section class="form-bg" id="cta">
   <div class="si">
     <div class="form-wrap">
+
+      <!-- LADO ESQUERDO -->
       <div>
-        <span class="stag stag-lt">Próximo passo</span>
-        <h2 class="sh2 sh2-w">Se você fatura bem mas trava na hora de escalar, a conversa começa aqui.</h2>
+        <div class="urgpill"><span class="urgdot"></span>Vagas limitadas para o diagnóstico estratégico</div>
+        <span class="stag stag-lt" style="margin-top:16px">Próximo passo</span>
+        <h2 class="sh2 sh2-w" style="margin-top:12px">Se você fatura bem mas trava na hora de escalar, a conversa começa aqui.</h2>
         <p class="slead slead-w" style="margin-top:18px">Um diagnóstico de 60 minutos é suficiente para mostrar onde está o gargalo da sua receita. Você mostra os dados. A gente mostra o que eles estão dizendo.</p>
         <div class="fpts">
-          <div class="fpt"><span class="fpt-arr">→</span><span class="fpt-tx">Você mostra os dados. A gente mostra onde está o gargalo de receita.</span></div>
-          <div class="fpt"><span class="fpt-arr">→</span><span class="fpt-tx">Você decide se quer avançar. A Ascens só atende quem faz sentido para os dois lados.</span></div>
-          <div class="fpt"><span class="fpt-arr">→</span><span class="fpt-tx">Vagas limitadas a 6 clientes por trimestre. A lista de espera já está aberta para o próximo ciclo.</span></div>
+          <div class="fpt"><span class="fpt-arr">✓</span><span class="fpt-tx">Análise profunda de maturidade digital e comercial.</span></div>
+          <div class="fpt"><span class="fpt-arr">✓</span><span class="fpt-tx">Identificação de gargalos no seu funil de vendas.</span></div>
+          <div class="fpt"><span class="fpt-arr">✓</span><span class="fpt-tx">Desenho de plano tático focado em ROI e escala.</span></div>
         </div>
       </div>
+
+      <!-- LADO DIREITO — FORMULÁRIO -->
       <div>
-        <div class="urgpill"><span class="urgdot"></span><span>Vagas do trimestre quase esgotadas</span></div>
         <div class="form-card">
-          <div class="form-title">Solicite seu diagnóstico gratuito</div>
-          <div class="form-sub">Preencha abaixo. Retornamos em até 24 horas úteis para agendar a sessão.</div>
-          <div class="fg"><label class="fl">Nome completo</label><input class="fi" type="text" placeholder="Seu nome"></div>
-          <div class="fg"><label class="fl">Cargo</label><input class="fi" type="text" placeholder="CEO, Diretor, Sócio..."></div>
-          <div class="fg"><label class="fl">Empresa</label><input class="fi" type="text" placeholder="Nome da empresa"></div>
-          <div class="fg">
-            <label class="fl">Faturamento anual</label>
-            <select class="fi fsel">
-              <option value="" disabled selected>Selecione</option>
-              <option>Entre R$6M e R$15M por ano</option>
-              <option>Entre R$15M e R$30M por ano</option>
-              <option>Entre R$30M e R$60M por ano</option>
-              <option>Entre R$60M e R$100M por ano</option>
-              <option>Acima de R$100M por ano</option>
-            </select>
-          </div>
-          <div class="fg"><label class="fl">WhatsApp</label><input class="fi" type="tel" placeholder="(00) 00000-0000"></div>
-          <div class="fg"><label class="fl">E-mail corporativo</label><input class="fi" type="email" placeholder="voce@empresa.com"></div>
-          <button class="btn-form">Quero meu diagnóstico gratuito →</button>
-          <p class="fdisc">Sem spam. Seus dados são usados apenas para o agendamento da sessão.</p>
+          <div class="form-title">Solicitar Diagnóstico</div>
+          <div class="form-sub">Insira seus dados abaixo. Resposta em até 24h úteis.</div>
+
+          <form id="lpForm" action="https://hook.us2.make.com/amg1gek5s3q469g45u8dn8eddxe7vgxl" method="POST">
+
+            <div class="fg">
+              <label class="fl" for="lead_name">Nome Completo</label>
+              <input class="fi" type="text" id="lead_name" name="lead_name" placeholder="Ex: Yara Silva" required>
+            </div>
+
+            <div class="fg">
+              <label class="fl" for="lead_company">Empresa</label>
+              <input class="fi" type="text" id="lead_company" name="lead_company" placeholder="Nome da empresa" required>
+            </div>
+
+            <div class="fg">
+              <label class="fl" for="lead_role">Cargo</label>
+              <input class="fi" type="text" id="lead_role" name="lead_role" placeholder="CEO, Diretor, Sócio..." required>
+            </div>
+
+            <div class="fg">
+              <label class="fl" for="lead_revenue">Faturamento Anual da Empresa</label>
+              <select class="fi fsel" id="lead_revenue" name="lead_revenue" required>
+                <option value="" disabled selected>Selecione uma opção</option>
+                <option value="Abaixo de R$6M por ano">Abaixo de R$6M por ano</option>
+                <option value="Entre R$6M e R$15M por ano">Entre R$6M e R$15M por ano</option>
+                <option value="Entre R$15M e R$30M por ano">Entre R$15M e R$30M por ano</option>
+                <option value="Entre R$30M e R$60M por ano">Entre R$30M e R$60M por ano</option>
+                <option value="Entre R$60M e R$100M por ano">Entre R$60M e R$100M por ano</option>
+                <option value="Acima de R$100M por ano">Acima de R$100M por ano</option>
+              </select>
+            </div>
+
+            <div class="fg">
+              <label class="fl" for="lead_phone">WhatsApp com DDD</label>
+              <input class="fi" type="tel" id="lead_phone" name="lead_phone" placeholder="(00) 00000-0000" required>
+            </div>
+
+            <div class="fg">
+              <label class="fl" for="lead_email">E-mail Corporativo</label>
+              <input class="fi" type="email" id="lead_email" name="lead_email" placeholder="voce@empresa.com" required>
+            </div>
+
+            <!-- Estado do botão: normal / enviando / sucesso / erro -->
+            <button type="submit" class="btn-form" id="btnSubmit">Garantir Meu Diagnóstico →</button>
+
+            <!-- Mensagem de feedback inline (invisível por padrão) -->
+            <div id="form-feedback" style="display:none;margin-top:14px;padding:12px 16px;border-radius:8px;font-size:13px;font-family:'Montserrat',sans-serif;font-weight:500;text-align:center"></div>
+
+            <p class="fdisc">Segurança total: seus dados estão 100% protegidos.</p>
+
+          </form>
         </div>
       </div>
+
     </div>
   </div>
 </section>
+
+<script>
+(function () {
+  var form     = document.getElementById('lpForm');
+  var btn      = document.getElementById('btnSubmit');
+  var feedback = document.getElementById('form-feedback');
+
+  if (!form) return;
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    // ── Validação básica de telefone (pelo menos 10 dígitos) ──
+    var phone = document.getElementById('lead_phone').value.replace(/\D/g, '');
+    if (phone.length < 10) {
+      showFeedback('Por favor, insira um WhatsApp válido com DDD.', 'error');
+      return;
+    }
+
+    // ── Estado: enviando ──
+    btn.disabled    = true;
+    btn.innerText   = 'Enviando dados...';
+    hideFeedback();
+
+    // ── Serializar campos como JSON (mais confiável com Make Webhooks) ──
+    var payload = {
+      lead_name:    document.getElementById('lead_name').value.trim(),
+      lead_company: document.getElementById('lead_company').value.trim(),
+      lead_role:    document.getElementById('lead_role').value.trim(),
+      lead_revenue: document.getElementById('lead_revenue').value,
+      lead_phone:   document.getElementById('lead_phone').value.trim(),
+      lead_email:   document.getElementById('lead_email').value.trim(),
+      origem:       'Landing Page Ascens',
+      data_envio:   new Date().toLocaleString('pt-BR', {timeZone: 'America/Sao_Paulo'})
+    };
+
+    fetch(form.action, {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify(payload),
+      mode:    'no-cors'   // necessário pois Make não devolve CORS headers
+    })
+    .then(function () {
+      // ── Sucesso (no-cors sempre resolve) ──
+      showFeedback('Recebemos seus dados! Em breve nossa equipe entrará em contato.', 'success');
+      form.reset();
+      btn.innerText = 'Enviado com sucesso ✓';
+    })
+    .catch(function (err) {
+      // ── Erro de rede ──
+      showFeedback('Houve um problema ao enviar. Tente novamente ou entre em contato pelo WhatsApp.', 'error');
+      btn.disabled  = false;
+      btn.innerText = 'Garantir Meu Diagnóstico →';
+    });
+  });
+
+  function showFeedback(msg, type) {
+    feedback.style.display     = 'block';
+    feedback.innerText         = msg;
+    feedback.style.background  = type === 'success' ? 'rgba(63,189,125,0.15)' : 'rgba(255,107,107,0.15)';
+    feedback.style.border      = '1px solid ' + (type === 'success' ? 'rgba(63,189,125,0.4)' : 'rgba(255,107,107,0.4)');
+    feedback.style.color       = type === 'success' ? '#7FE87F' : '#FF9090';
+  }
+
+  function hideFeedback() {
+    feedback.style.display = 'none';
+  }
+})();
+</script>
 
 <!-- FOOTER -->
 <footer>
