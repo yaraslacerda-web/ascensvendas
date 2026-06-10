@@ -218,28 +218,6 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.07);padding
 </style>
 </head>
 <body>
-  <div id="ehint"><strong>Como usar:</strong> Abra o editor e clique em qualquer texto da página para editar. Ou use a lista abaixo.</div>
-  <div id="econt">
-    <div id="efw">
-      <div id="eflb"></div>
-      <div id="efpv"></div>
-      <textarea id="eta" oninput="prevE(this.value)"></textarea>
-      <button id="eapp" onclick="applyE()">Aplicar</button>
-    </div>
-    <div id="eall"></div>
-  </div>
-  <div id="eact">
-    <h3>Ações</h3>
-    <button class="abtn pri" onclick="dlPage()">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      Baixar página
-    </button>
-    <button class="abtn" onclick="resetE()">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.17"/></svg>
-      Restaurar originais
-    </button>
-  </div>
-</div>
 
 <!-- NAV -->
 <nav>
@@ -573,8 +551,8 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.07);padding
     </div>
     <div class="foot-col">
       <h4>Contato</h4>
-      <p>contato@ascens.co</p>
-      <p>São Paulo, Brasil</p>
+      <p>yaraslacerda@gmail.com</p>
+      <p>+55 (35) 9 99102-4927</p>
       <a href="#cta" style="margin-top:8px">Solicitar diagnóstico gratuito →</a>
     </div>
   </div>
