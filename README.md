@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -574,72 +573,76 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.07);padding
 </section>
 
 <script>
-(function () {
-  var form     = document.getElementById('lpForm');
-  var btn      = document.getElementById('btnSubmit');
-  var feedback = document.getElementById('form-feedback');
-
-  if (!form) return;
-
-  form.addEventListener('submit', function (e) {
+  document.getElementById('lpForm').addEventListener('submit', function(e) {
     e.preventDefault();
 
-    // ── Validação básica de telefone (pelo menos 10 dígitos) ──
-    var phone = document.getElementById('lead_phone').value.replace(/\D/g, '');
+    const form   = this;
+    const button = document.getElementById('btnSubmit');
+    const feedback = document.getElementById('form-feedback');
+
+    // Validação de telefone — mínimo 10 dígitos
+    const phone = document.getElementById('lead_phone').value.replace(/\D/g, '');
     if (phone.length < 10) {
-      showFeedback('Por favor, insira um WhatsApp válido com DDD.', 'error');
+      feedback.style.display    = 'block';
+      feedback.innerText        = 'Por favor, insira um WhatsApp válido com DDD.';
+      feedback.style.background = 'rgba(255,107,107,0.15)';
+      feedback.style.border     = '1px solid rgba(255,107,107,0.4)';
+      feedback.style.color      = '#FF9090';
       return;
     }
 
-    // ── Estado: enviando ──
-    btn.disabled    = true;
-    btn.innerText   = 'Enviando dados...';
-    hideFeedback();
+    // Estado: enviando
+    button.disabled   = true;
+    button.innerText  = 'Enviando dados...';
+    if (feedback) feedback.style.display = 'none';
 
-    // ── Serializar campos como JSON (mais confiável com Make Webhooks) ──
-    var payload = {
-      lead_name:    document.getElementById('lead_name').value.trim(),
-      lead_company: document.getElementById('lead_company').value.trim(),
-      lead_role:    document.getElementById('lead_role').value.trim(),
-      lead_revenue: document.getElementById('lead_revenue').value,
-      lead_phone:   document.getElementById('lead_phone').value.trim(),
-      lead_email:   document.getElementById('lead_email').value.trim(),
-      origem:       'Landing Page Ascens',
-      data_envio:   new Date().toLocaleString('pt-BR', {timeZone: 'America/Sao_Paulo'})
-    };
+    // Captura os campos do formulário
+    const formData = new FormData(form);
 
+    // Transforma FormData em objeto JSON com campos separados
+    const data = {};
+    formData.forEach((value, key) => {
+      data[key] = value;
+    });
+
+    // Adiciona metadados úteis para o ClickUp
+    data['origem']      = 'Landing Page Ascens';
+    data['data_envio']  = new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' });
+
+    // Envia para o Webhook do Make como JSON
     fetch(form.action, {
-      method:  'POST',
+      method:  form.method,
       headers: { 'Content-Type': 'application/json' },
-      body:    JSON.stringify(payload),
-      mode:    'no-cors'   // necessário pois Make não devolve CORS headers
+      body:    JSON.stringify(data),
+      mode:    'no-cors'
     })
-    .then(function () {
-      // ── Sucesso (no-cors sempre resolve) ──
-      showFeedback('Recebemos seus dados! Em breve nossa equipe entrará em contato.', 'success');
+    .then(() => {
+      // Sucesso — mostrar feedback e resetar formulário
+      if (feedback) {
+        feedback.style.display    = 'block';
+        feedback.innerText        = 'Recebemos seus dados! Em breve nossa equipe entrará em contato.';
+        feedback.style.background = 'rgba(63,189,125,0.15)';
+        feedback.style.border     = '1px solid rgba(63,189,125,0.4)';
+        feedback.style.color      = '#7FE87F';
+      }
       form.reset();
-      btn.innerText = 'Enviado com sucesso ✓';
+      button.innerText = 'Enviado com sucesso ✓';
+      // Para redirecionar após envio, descomente a linha abaixo:
+      // window.location.href = "https://seusite.com.br/obrigado";
     })
-    .catch(function (err) {
-      // ── Erro de rede ──
-      showFeedback('Houve um problema ao enviar. Tente novamente ou entre em contato pelo WhatsApp.', 'error');
-      btn.disabled  = false;
-      btn.innerText = 'Garantir Meu Diagnóstico →';
+    .catch((error) => {
+      console.error('Erro ao enviar:', error);
+      if (feedback) {
+        feedback.style.display    = 'block';
+        feedback.innerText        = 'Ocorreu um erro ao enviar. Tente novamente ou entre em contato pelo WhatsApp.';
+        feedback.style.background = 'rgba(255,107,107,0.15)';
+        feedback.style.border     = '1px solid rgba(255,107,107,0.4)';
+        feedback.style.color      = '#FF9090';
+      }
+      button.disabled  = false;
+      button.innerText = 'Garantir Meu Diagnóstico →';
     });
   });
-
-  function showFeedback(msg, type) {
-    feedback.style.display     = 'block';
-    feedback.innerText         = msg;
-    feedback.style.background  = type === 'success' ? 'rgba(63,189,125,0.15)' : 'rgba(255,107,107,0.15)';
-    feedback.style.border      = '1px solid ' + (type === 'success' ? 'rgba(63,189,125,0.4)' : 'rgba(255,107,107,0.4)');
-    feedback.style.color       = type === 'success' ? '#7FE87F' : '#FF9090';
-  }
-
-  function hideFeedback() {
-    feedback.style.display = 'none';
-  }
-})();
 </script>
 
 <!-- FOOTER -->
